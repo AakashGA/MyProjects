@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dice_Application" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table" translatesAutoresizingMaskIntoConstraints="NO" id="sHK-dv-uBU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="YTz-Yh-OrM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's Add:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNk-Dx-4wI">
+                                        <rect key="frame" x="149.5" y="0.0" width="76.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="kSo-9t-LFZ">
+                                        <rect key="frame" x="68.5" y="70.5" width="238" height="98"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice3" translatesAutoresizingMaskIntoConstraints="NO" id="XkA-Gp-Tfk">
+                                                <rect key="frame" x="0.0" y="0.0" width="99" height="98"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice5" translatesAutoresizingMaskIntoConstraints="NO" id="iTa-zC-QCg">
+                                                <rect key="frame" x="139" y="0.0" width="99" height="98"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="2Ib-RM-lVh">
+                                        <rect key="frame" x="13.5" y="218.5" width="348" height="428.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCF-wU-1rc">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="428.5"/>
+                                                <state key="normal" title="MUSIC">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="playMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="caC-bY-dkd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilp-z2-w4b">
+                                                <rect key="frame" x="138" y="0.0" width="77" height="428.5"/>
+                                                <state key="normal" title="ROLL" image="Roll"/>
+                                                <connections>
+                                                    <action selector="rollDice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yXi-Yt-ThH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDZ-31-GcY">
+                                                <rect key="frame" x="305" y="0.0" width="43" height="428.5"/>
+                                                <state key="normal" title="MORE">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="moreOptions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cYI-Av-yiQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sHK-dv-uBU" secondAttribute="trailing" id="3sA-ja-uVl"/>
+                            <constraint firstItem="YTz-Yh-OrM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5XF-jz-6iZ"/>
+                            <constraint firstItem="sHK-dv-uBU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="A6Q-ph-jlT"/>
+                            <constraint firstItem="sHK-dv-uBU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Cc2-k7-J4c"/>
+                            <constraint firstItem="YTz-Yh-OrM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Soa-s3-baP"/>
+                            <constraint firstAttribute="bottom" secondItem="sHK-dv-uBU" secondAttribute="bottom" id="Swt-UW-BiR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YTz-Yh-OrM" secondAttribute="bottom" id="hjR-mr-TTn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YTz-Yh-OrM" secondAttribute="trailing" id="jWV-CH-btY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="dNk-Dx-4wI" id="kQp-CH-56w"/>
+                        <outlet property="leftImageView" destination="XkA-Gp-Tfk" id="BMF-KW-XJn"/>
+                        <outlet property="rightImageView" destination="iTa-zC-QCg" id="rSr-GC-Ryl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Dice3" width="99" height="98"/>
+        <image name="Dice5" width="99" height="98"/>
+        <image name="Roll" width="32" height="32"/>
+        <image name="table" width="414" height="736"/>
+    </resources>
+</document>

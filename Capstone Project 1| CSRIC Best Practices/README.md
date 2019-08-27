@@ -80,8 +80,29 @@ In this notebook we focused on the description column & see how that correlated 
   - Fine tune models through Grid Search or parameters.
 
 ### Conclusions, Hurdles, Recommendations, and Improvements
-Our main takeaway after working on this project is that Natural Language Processing is an incredibly powerful and useful tool when dealing with social media. NLP was used as we trained a model to determine whether tweets gathered were on-topic or off-topic, and was used again as we determined the urgency of on-topic tweets. In addition to using traditional NLP methods, Word2Vec was a useful tool in analyzing cosine similarities of urgent and non-urgent tweets. We believe that our model's accuracy can be improved given input from Subject Matter Experts to better cultivate appropriate lists of urgent / non-urgent words.
+My main takeaway after working on this project is that Natural Language Processing is an incredibly powerful and useful tool when dealing with data. NLP was used as I trained a model to determine whether the words in my description column could correlate to a strong pattern to priority. I then wanted to see if the words in that column could be categorized as important or not important when correlated to the level of priority of the network situation. Based off my models, the data was somewhat or very little correlated because it was overfit however it wasn't pointless because I was still able to make predictions & recommendations off of it.
 
-One of our main takeaways from this project is that, while our model did very well at predicting tweets related to hurricanes, tornados, or floods (our CrisisLex crises) - our model did not do as well predicting other natural disasters. It stands to reason that people will use different language for different natural disasters. As such, in a real-world application we would want to build a model for each possible natural disaster, using Subject Matter Experts for each individual disaster to help cultivate a list of appropriate words to feed to our Natural Language Processing model. In terms of improving our mapping, it may be beneficial to pull tweets from a grid of coordinates to get a more complete map of areas being affected by the natural disaster.
+Some of the hurdles I had faced were: there wasn't enough data, the data was vague & it was an unbalanced classification problem. My recommendations would be to focus on the highly-important & critical based data. The FCC can save money if they prioritize the more important network related issues by fixing the smaller issues before hand. Since most of the cyber related problems were network based we can do the following.
+
+We can focus on the simple first:
+- Different Cables                    
+- Color Code Cables              
+- Better ventilation of warehouse      
+- Increase power capacity             
+- Better hardware                     
+- Spacing of antennas
+- Provide Secure Electrical Software where feasible
+- Utilize Network Surveillance
+- Find thresholds for new hardware & software
+- Virus protection
+
+We then can allocate money & put it towards the more critical:
+- Minimizing single points of failure
+- Device Management Architecture
+- Secure networks
+- Encrypted systems
+- Software faults
+
+However this is more complex.
 
 Looking towards the future, it may be beneficial to utilize different models for our classification problems - specifically whether we're given more data especially in this situation & if they're considered to be important or not important. Additionally, it would likely help to classify importance on a larger scale than just based off of network related attacks. Not having enough data was the biggest hurdle but it could be because the FCC doesn't want to reveal that more of these attacks actually happened or sensitivity of information.

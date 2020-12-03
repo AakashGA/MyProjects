@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.8.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.8.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.8.000" expanded="true" height="68" name="Retrieve wine" width="90" x="45" y="34">
+        <parameter key="repository_entry" value="../data/wine"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.8.000" expanded="true" height="82" name="Set Role" width="90" x="179" y="34">
+        <parameter key="attribute_name" value="quality"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="true" class="concurrency:loop_parameters" compatibility="9.8.000" expanded="true" height="103" name="Loop Parameters" width="90" x="380" y="34">
+        <list key="parameters">
+          <parameter key="Generalized Linear Model.lambda" value="[0.0000001;100000000000;1000;logarithmic]"/>
+        </list>
+        <parameter key="error_handling" value="fail on error"/>
+        <parameter key="log_performance" value="true"/>
+        <parameter key="log_all_criteria" value="false"/>
+        <parameter key="synchronize" value="false"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="split_data" compatibility="9.8.000" expanded="true" height="103" name="Split Data" width="90" x="112" y="136">
+            <enumeration key="partitions">
+              <parameter key="ratio" value="0.7"/>
+              <parameter key="ratio" value="0.3"/>
+            </enumeration>
+            <parameter key="sampling_type" value="shuffled sampling"/>
+            <parameter key="use_local_random_seed" value="true"/>
+            <parameter key="local_random_seed" value="1992"/>
+          </operator>
+          <operator activated="true" class="h2o:generalized_linear_model" compatibility="9.8.000" expanded="true" height="124" name="Generalized Linear Model" width="90" x="246" y="136">
+            <parameter key="family" value="AUTO"/>
+            <parameter key="link" value="family_default"/>
+            <parameter key="solver" value="AUTO"/>
+            <parameter key="reproducible" value="false"/>
+            <parameter key="maximum_number_of_threads" value="4"/>
+            <parameter key="use_regularization" value="true"/>
+            <parameter key="lambda" value="1.0"/>
+            <parameter key="lambda_search" value="false"/>
+            <parameter key="number_of_lambdas" value="0"/>
+            <parameter key="lambda_min_ratio" value="0.0"/>
+            <parameter key="early_stopping" value="true"/>
+            <parameter key="stopping_rounds" value="3"/>
+            <parameter key="stopping_tolerance" value="0.001"/>
+            <parameter key="alpha" value="0.0"/>
+            <parameter key="standardize" value="false"/>
+            <parameter key="non-negative_coefficients" value="false"/>
+            <parameter key="add_intercept" value="true"/>
+            <parameter key="compute_p-values" value="false"/>
+            <parameter key="remove_collinear_columns" value="false"/>
+            <parameter key="missing_values_handling" value="MeanImputation"/>
+            <parameter key="max_iterations" value="0"/>
+            <parameter key="specify_beta_constraints" value="false"/>
+            <list key="beta_constraints"/>
+            <parameter key="max_runtime_seconds" value="0"/>
+            <list key="expert_parameters"/>
+          </operator>
+          <operator activated="true" class="multiply" compatibility="9.8.000" expanded="true" height="103" name="Multiply" width="90" x="447" y="136"/>
+          <operator activated="true" class="apply_model" compatibility="9.8.000" expanded="true" height="82" name="Apply Model" width="90" x="581" y="136">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_regression" compatibility="9.8.000" expanded="true" height="82" name="p of test" width="90" x="715" y="136">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="root_mean_squared_error" value="true"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="false"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="false"/>
+            <parameter key="correlation" value="false"/>
+            <parameter key="squared_correlation" value="true"/>
+            <parameter key="prediction_average" value="false"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <operator activated="true" class="apply_model" compatibility="9.8.000" expanded="true" height="82" name="Apply Model (2)" width="90" x="581" y="340">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_regression" compatibility="9.8.000" expanded="true" height="82" name="p of train" width="90" x="715" y="340">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="root_mean_squared_error" value="true"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="false"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="false"/>
+            <parameter key="correlation" value="false"/>
+            <parameter key="squared_correlation" value="true"/>
+            <parameter key="prediction_average" value="false"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <operator activated="true" class="log" compatibility="9.8.000" expanded="true" height="103" name="Log" width="90" x="916" y="187">
+            <list key="log">
+              <parameter key="r square of training" value="operator.p of train.value.squared_correlation"/>
+              <parameter key="r square of testing" value="operator.p of test.value.squared_correlation"/>
+              <parameter key="lambda" value="operator.Generalized Linear Model.parameter.lambda"/>
+            </list>
+            <parameter key="sorting_type" value="none"/>
+            <parameter key="sorting_k" value="100"/>
+            <parameter key="persistent" value="false"/>
+          </operator>
+          <connect from_port="input 1" to_op="Split Data" to_port="example set"/>
+          <connect from_op="Split Data" from_port="partition 1" to_op="Generalized Linear Model" to_port="training set"/>
+          <connect from_op="Split Data" from_port="partition 2" to_op="Apply Model" to_port="unlabelled data"/>
+          <connect from_op="Generalized Linear Model" from_port="model" to_op="Multiply" to_port="input"/>
+          <connect from_op="Generalized Linear Model" from_port="exampleSet" to_op="Apply Model (2)" to_port="unlabelled data"/>
+          <connect from_op="Multiply" from_port="output 1" to_op="Apply Model" to_port="model"/>
+          <connect from_op="Multiply" from_port="output 2" to_op="Apply Model (2)" to_port="model"/>
+          <connect from_op="Apply Model" from_port="labelled data" to_op="p of test" to_port="labelled data"/>
+          <connect from_op="Apply Model" from_port="model" to_port="output 2"/>
+          <connect from_op="p of test" from_port="performance" to_op="Log" to_port="through 1"/>
+          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="p of train" to_port="labelled data"/>
+          <connect from_op="p of train" from_port="performance" to_op="Log" to_port="through 2"/>
+          <connect from_op="Log" from_port="through 1" to_port="output 1"/>
+          <portSpacing port="source_input 1" spacing="0"/>
+          <portSpacing port="source_input 2" spacing="0"/>
+          <portSpacing port="sink_performance" spacing="0"/>
+          <portSpacing port="sink_output 1" spacing="0"/>
+          <portSpacing port="sink_output 2" spacing="0"/>
+          <portSpacing port="sink_output 3" spacing="0"/>
+        </process>
+      </operator>
+      <connect from_op="Retrieve wine" from_port="output" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="Loop Parameters" to_port="input 1"/>
+      <connect from_op="Loop Parameters" from_port="output 1" to_port="result 1"/>
+      <connect from_op="Loop Parameters" from_port="output 2" to_port="result 2"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>

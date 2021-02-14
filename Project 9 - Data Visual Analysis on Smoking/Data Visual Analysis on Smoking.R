@@ -152,11 +152,26 @@ ggplot(data = us_smoking, aes(x = year)) +
        caption = paste("Source: National Health Interview Survey (NHIS).", 
                        "In 2006, the NHIS implemented a new simple design.", 
                        sep="\n")) + hw +
-  theme(plot.caption = element_text(hjust=0), legend.position = "none") 
+  theme(plot.caption = element_text(hjust=0), legend.position = "none")
 
+# Fig 9
+# Reorder the regions so the legends & graphs appear in order of the region
+counties_smoking$region_name <- factor(counties_smoking$region_name, 
+                                       levels = c('West','Midwest','Northeast', 'South'), ordered = TRUE)
+# Set up our color palette from color brewer, 4-class YlGnBu
+color_brewer_palette <- c("#ffffcc","#a1dab4","#41b6c4","#225ea8")
+
+#+ fig.width=6, fig.height=3
+fig1 <- ggplot(data = counties_smoking, aes(x = adult_smoking_rate, color = region_name)) + 
+  geom_density(alpha = 0.3, size = 2.75) +
+  labs(x = "Smoking rate (%)",
+       y = "Density",
+       title = paste("Figure A. Density functions for county-level",
+                     "adult smoking rates", sep = "\n"),
+       color = "Region") + hw
+fig1 + scale_color_manual(values = color_brewer_palette)
 
 # Clean Up, reset memory as well clear our env pane
 rm(list=ls())
 gc(verbose = TRUE, reset = TRUE)
 format(memory.size(), units = "MB")
-

@@ -166,7 +166,7 @@ fig1 <- ggplot(data = counties_smoking, aes(x = adult_smoking_rate, color = regi
   geom_density(alpha = 0.3, size = 2.75) +
   labs(x = "Smoking rate (%)",
        y = "Density",
-       title = paste("Figure A. Density functions for county-level",
+       title = paste("Figure 9. Density functions for county-level",
                      "adult smoking rates", sep = "\n"),
        color = "Region") + hw
 fig1 + scale_color_manual(values = color_brewer_palette)
